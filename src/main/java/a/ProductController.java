@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProductController {
 
-    @Autowired private ProductService productService;
+    @Autowired(required=false) 
+    private ProductService productService;
  
     // Save operation
-    @PostMapping("/products")
-    public Product saveProduct(
-        @Validated @RequestBody Product product)
+    @PostMapping(value="/products", consumes = {"application/json"})
+    public Product saveProduct(@Validated @RequestBody Product product)
     {
         return productService.saveProduct(product);
     }

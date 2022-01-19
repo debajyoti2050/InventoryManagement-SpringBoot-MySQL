@@ -1,11 +1,8 @@
+package a;
 import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import a.Product;
-import a.ProductRepository;
-import a.ProductService;
 
 public class ProductServiceImpl implements ProductService {
 	
