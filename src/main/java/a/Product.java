@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Product {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long productID;
 	private String productName;
 	private String productManufacturer;
