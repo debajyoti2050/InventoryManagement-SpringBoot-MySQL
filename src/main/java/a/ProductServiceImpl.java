@@ -1,11 +1,11 @@
+package a;
 import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import a.Product;
-import a.ProductRepository;
-import a.ProductService;
+@Service
 
 public class ProductServiceImpl implements ProductService {
 	

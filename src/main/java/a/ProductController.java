@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProductController {
 
-    @Autowired private ProductService productService;
+    @Autowired(required=false) 
+    private ProductService productService;
  
     // Save operation
-    @PostMapping("/products")
-    public Product saveProduct(
-        @Validated @RequestBody Product product)
+    @PostMapping(value="/products", consumes = {"application/json"})
+    public Product saveProduct(@Validated @RequestBody Product product)
     {
         return productService.saveProduct(product);
     }
@@ -34,9 +34,7 @@ public class ProductController {
  
     // Update operation
     @PutMapping("/products/{id}")
-    public Product
-    updateProduct(@RequestBody Product product,
-                     @PathVariable("id") Long departmentId)
+    public Product updateProduct(@RequestBody Product product,@PathVariable("id") Long departmentId)
     {
         return productService.updateDepartment(
             product, departmentId);
@@ -47,8 +45,7 @@ public class ProductController {
     public String deleteDepartmentById(@PathVariable("id")
                                        Long departmentId)
     {
-        productService.deleteProductById(
-            departmentId);
+        productService.deleteProductById(departmentId);
         return "Deleted Successfully";
     }
 
