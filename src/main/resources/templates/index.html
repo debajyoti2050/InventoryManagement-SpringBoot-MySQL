@@ -11,25 +11,22 @@
 <div class="wrapper">
         <div class="title">Product Management Form</div>
         <div class="form">
-            <form id="Submit-form" action="/post"method="post">
+            <form id="Submit-form" action="/post" name="myForm" method="post">
                 <div class="inputfield">
-                    <label for="Product Name">Product Name</label>
+                    <label for="productName">Product Name</label>
                     <input type="text" class="input" name="name" id="Product Name" value="" />
                 </div>
+                
                 <div class="inputfield">
-                    <label for="Product ID">Product ID</label>
-                    <input type="text" class="input" name="name" id="Product ID" value="" />
-                </div>
-                <div class="inputfield">
-                    <label for="Product Manufacturer">Product Manufacturer</label>
+                    <label for="productManufacturer">Product Manufacturer</label>
                     <input type="text" class="input" name="name" id="Product Manufacturer" value="" />
                 </div>
                 <div class="inputfield">
-                    <label for="Product Price">Product Price</label>
+                    <label for="productPrice">Product Price</label>
                     <input type="text"  class="input" name="name" id="Product Price"value=""/>
                 </div>
                 <div class="inputfield">
-                    <input type="submit" value="submit" class="btn"/>
+                    <input type="submit" value="submit" onClick="submitForm()" class="btn"/>
                     <!--
                     <input type="reset" value="reset" class="btn"/>
                     -->
@@ -37,6 +34,21 @@
             </form>
         </div>
     </div>
+    
+    <script type="text/javascript">
+    function submitForm(){
+    	alert("Sending Input Data in JSON");
+    	var xhr = new XMLHttpRequest();
+        xhr.open(form.method, form.action, true);
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        var formData = JSON.stringify($("#myForm").serializeArray());
+        xhr.send(JSON.stringify(formData));
+    
+    }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    
 
 </body>
 </html>

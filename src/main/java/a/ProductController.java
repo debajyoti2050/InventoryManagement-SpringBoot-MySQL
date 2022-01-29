@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+@RestController
 @Controller
 @RequestMapping("/")
 public class ProductController {
@@ -51,8 +53,7 @@ public class ProductController {
  
     // Delete operation
     @DeleteMapping("/products/{id}")
-    public String deleteDepartmentById(@PathVariable("id")
-                                       Long departmentId)
+    public String deleteDepartmentById(@PathVariable("id")Long departmentId)
     {
         productService.deleteProductById(departmentId);
         return "Deleted Successfully";
