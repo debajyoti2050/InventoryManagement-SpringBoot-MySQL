@@ -3,6 +3,8 @@ package a;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +12,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
+@Controller
+@RequestMapping("/")
 public class ProductController {
 
     @Autowired(required=false) 
     private ProductService productService;
+    
+    @GetMapping("/")
+	public String getLandingPage(Model m) {
+		return"index";
+	}
  
     // Save operation
     @PostMapping(value="/products", consumes = {"application/json"})
@@ -42,8 +53,7 @@ public class ProductController {
  
     // Delete operation
     @DeleteMapping("/products/{id}")
-    public String deleteDepartmentById(@PathVariable("id")
-                                       Long departmentId)
+    public String deleteDepartmentById(@PathVariable("id")Long departmentId)
     {
         productService.deleteProductById(departmentId);
         return "Deleted Successfully";
